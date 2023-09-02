@@ -25,7 +25,7 @@ const RegisterModel = () => {
         }
     } = useForm<FieldValues>({
         defaultValues:{
-            name: '',
+            name: '', 
             email:'',
             password:''
         }
