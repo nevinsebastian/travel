@@ -1,10 +1,11 @@
 
 
 import ClientOnly from './components/ClientOnly';
-import RegisterModel from './components/Modal/RegisterModel';
+import RegisterModel from './components/Modal/RegisterModal';
 import Navbar from './components/navbar/Navbar';
 import './globals.css'
 import {Nunito} from "next/font/google";
+import ToasterProvider from './providers/ToasterProvider';
 
 export const metadata = {
   title: 'Travel',
@@ -24,8 +25,9 @@ export default function RootLayout({
     <html lang="en">
       <body className={font.className}>
         <ClientOnly>
-        <Navbar/>
+        <ToasterProvider/>
         <RegisterModel/>
+        <Navbar/>
         </ClientOnly>
         
         {children}

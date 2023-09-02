@@ -1,25 +1,23 @@
-'use client';
-
 import { AiOutlineMenu } from 'react-icons/ai';
 import Avatar from '../Avatar';
 import { useCallback, useState } from 'react';
-import { classicNameResolver } from 'typescript';
-import { disconnect } from 'process';
-import MenuItem from './MenuItem';
+import MenuItem from './MenuItem'; // Import your MenuItem component here
+import useRegisterModal from '@/app/hooks/useRegisterModal';
 
 const UserMenu = () => {
-    const [isOpen, setIsOpen] =useState(false);
+    const registerModal = useRegisterModal();
+    const [isOpen, setIsOpen] = useState(false);
 
-    const toggleOpen = useCallback(() =>{
-        setIsOpen((value) =>!value);
-    },[]);
-  return (
-    <div className="relative">
-      <div className="flex items-center gap-3">
-        
-        <div
-          onClick={() => {}}
-          className="
+    const toggleOpen = useCallback(() => {
+        setIsOpen((value) => !value);
+    }, []);
+
+    return (
+        <div className="relative">
+            <div className="flex items-center gap-3">
+                <div
+                    onClick={() => {}}
+                    className="
             hidden
             md:block
             text-sm
@@ -31,12 +29,12 @@ const UserMenu = () => {
             transition
             cursor-pointer
           "
-        >
-          Airbnb Your home
-        </div>
-        <div
-          onClick={toggleOpen}
-          className="
+                >
+                    Airbnb Your home
+                </div>
+                <div
+                    onClick={toggleOpen}
+                    className="
             p-4
             md:py-1
             md:px-2
@@ -51,16 +49,16 @@ const UserMenu = () => {
             hover:shadow-md
             transition
           "
-        >
-          <AiOutlineMenu />
-          <div className='hidden md:block'>
-            <Avatar />
-          </div>
-        </div>
-      </div>
-      {isOpen && (
-        <div
-        className='
+                >
+                    <AiOutlineMenu />
+                    <div className='hidden md:block'>
+                        <Avatar />
+                    </div>
+                </div>
+            </div>
+            {isOpen && (
+                <div
+                    className='
         absolute
         rounded-xl
         shadow-md
@@ -71,18 +69,22 @@ const UserMenu = () => {
         right-0
         top-12
         text-sm'>
-            <div className='flex flex-col cursor-pointer'>
-                <>
-                    <MenuItem 
-                    onClick={() => {}}
-                    label = 'sign up'/>
-                </>
-            </div>
-
+                    <div className='flex flex-col cursor-pointer'>
+                        <>
+                            <MenuItem
+                                onClick={() => {}}
+                                label='Login'
+                            />
+                            <MenuItem
+                                onClick={registerModal.onOpen} // Call onOpen to open the modal
+                                label='Sign up'
+                            />
+                        </>
+                    </div>
+                </div>
+            )}
         </div>
-      )}
-    </div>
-  );
+    );
 };
 
 export default UserMenu;
