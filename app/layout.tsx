@@ -1,11 +1,13 @@
 
 
 import ClientOnly from './components/ClientOnly';
-import RegisterModel from './components/Modal/RegisterModal';
+import RegisterModal from './components/Modal/RegisterModal';
 import Navbar from './components/navbar/Navbar';
 import './globals.css'
 import {Nunito} from "next/font/google";
 import ToasterProvider from './providers/ToasterProvider';
+import LoginModal from './components/Modal/LoginModal';
+import getCurrentUser from './actions/getCurrentUser';
 
 export const metadata = {
   title: 'Travel',
@@ -16,18 +18,20 @@ const font = Nunito ({
   subsets: ["latin"],
 })
 
-export default function RootLayout({
+export default async  function RootLayout({
   children,
 }: {
   children: React.ReactNode
 }) {
+  const currentUser = await getCurrentUser();
   return (
     <html lang="en">
       <body className={font.className}>
         <ClientOnly>
         <ToasterProvider/>
-        <RegisterModel/>
-        <Navbar/>
+        <LoginModal/>
+        <RegisterModal/>
+        <Navbar currentUser={currentUser}/>
         </ClientOnly>
         
         {children}

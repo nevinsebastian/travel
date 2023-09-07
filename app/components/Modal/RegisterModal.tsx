@@ -17,8 +17,8 @@ import { toast } from "react-hot-toast";
 import Button from "../Button";
 
 
-const RegisterModel = () => {
-    const registerModel = useRegisterModal();
+const RegisterModal = () => {
+    const registerModal = useRegisterModal();
     const [isLoading, setIsLoading] = useState(false);
 
 
@@ -41,7 +41,7 @@ const RegisterModel = () => {
 
         axios.post('/api/register',data)
         .then(() => {
-            registerModel.onClose();
+            registerModal.onClose();
         }
 
         )
@@ -114,7 +114,7 @@ const RegisterModel = () => {
                     Already  have an account?
                     </div>
                     <div
-                    onClick={registerModel.onClose}
+                    onClick={registerModal.onClose}
                     className="
                     text-neutral-800
                     cursor-pointer
@@ -131,10 +131,10 @@ const RegisterModel = () => {
     return ( 
         <Modal 
         disabled={isLoading}
-        isOpen={registerModel.isOpen}
+        isOpen={registerModal.isOpen}
         title="Register"
         actionLabel="continue"
-        onClose={registerModel.onClose}
+        onClose={registerModal.onClose}
         onSubmit={handleSubmit(onSubmit)}
         body={bodyContent}
         footer={footerContent}
@@ -142,4 +142,4 @@ const RegisterModel = () => {
      );
 }
  
-export default RegisterModel;
+export default RegisterModal;
