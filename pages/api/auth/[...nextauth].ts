@@ -8,7 +8,7 @@ import { error } from "console";
 import bycrpt from "bcrypt";
 
 
-
+   
 export const authOptions: AuthOptions = {
 
     adapter: PrismaAdapter(prisma),
