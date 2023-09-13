@@ -1,11 +1,13 @@
-'use client'
+'use client';
 
 import Container from "../Container";
 import {MdKayaking,MdOutlineSurfing,MdHouseboat} from 'react-icons/md'
-import {GiSpeedBoat} from 'react-icons/gi'
+import {GiSpeedBoat,GiCampingTent,GiHiking,GiVillage} from 'react-icons/gi'
 import {LuSailboat} from 'react-icons/lu'
 import CategoryBox from "../CategoryBox";
 import { usePathname, useSearchParams } from "next/navigation";
+import {FaSwimmer} from "react-icons/fa"
+import {RiMotorbikeLine} from "react-icons/ri"
 
 export const categories = [
     {
@@ -32,6 +34,31 @@ export const categories = [
     label:"Speed boat",
     icon:GiSpeedBoat,
     discription:"Speedboad activitys"
+},
+{
+    label:"Camping ",
+    icon:GiCampingTent,
+    discription:"Camping activitys"
+},
+{
+    label:"Hiking",
+    icon:GiHiking,
+    discription:"Hiking activitys"
+},
+{
+    label:"Swimming",
+    icon:FaSwimmer,
+    discription:"Swimming activitys"
+},
+{
+    label:"Bike",
+    icon:RiMotorbikeLine,
+    discription:"Biking activitys"
+},
+{
+    label:"Side seeing",
+    icon:GiVillage,
+    discription:"sideseeing activitys"
 }
 
 ]

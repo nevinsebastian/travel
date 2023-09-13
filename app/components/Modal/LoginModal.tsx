@@ -16,14 +16,16 @@ import useRegisterModal from "@/app/hooks/useRegisterModal";
 import useLoginModal from "@/app/hooks/useLoginModal";
 
 import Modal from "./Modal";
-import Input from "../Input";
+import Input from "../../inputs/Input";
 import Heading from "../Heading";
 import Button from "../Button";
 
 const LoginModal = () => {
   const router = useRouter();
+
   const loginModal = useLoginModal();
   const registerModal = useRegisterModal();
+
   const [isLoading, setIsLoading] = useState(false);
 
   const { 
@@ -62,7 +64,7 @@ const LoginModal = () => {
     });
   }
 
-  const onToggle = useCallback(() => {
+  const toggle = useCallback(() => {
     loginModal.onClose();
     registerModal.onOpen();
   }, [loginModal, registerModal])
@@ -112,7 +114,7 @@ const LoginModal = () => {
       text-neutral-500 text-center mt-4 font-light">
         <p>First time here?
           <span 
-            onClick={onToggle} 
+            onClick={toggle} 
             className="
               text-neutral-800
               cursor-pointer 
