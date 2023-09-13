@@ -5,10 +5,10 @@ import MenuItem from './MenuItem'; // Import your MenuItem component here
 import useRegisterModal from '@/app/hooks/useRegisterModal';
 import useLoginModal from '@/app/hooks/useLoginModal';
 import { signOut } from 'next-auth/react';
-import { safeUser } from '@/app/types';
+import { SafeUser } from '@/app/types';
 
 interface UserMenuProps {
-    currentUser?: safeUser | null
+    currentUser?: SafeUser | null
 }
 
 const UserMenu: React.FC<UserMenuProps> = ({
@@ -40,7 +40,7 @@ const UserMenu: React.FC<UserMenuProps> = ({
             cursor-pointer
           "
                 >
-                    Airbnb Your home
+                    add Your prop
                 </div>
                 <div
                     onClick={toggleOpen}

@@ -39,7 +39,8 @@ const RegisterModal= () => {
     },
   });
 
-  const onSubmit: SubmitHandler<FieldValues> = (data) => {
+  const onSubmit: SubmitHandler<FieldValues> = 
+  (data) => {
     setIsLoading(true);
 
     axios.post('/api/register', data)
@@ -64,7 +65,7 @@ const RegisterModal= () => {
   const bodyContent = (
     <div className="flex flex-col gap-4">
       <Heading
-        title="Welcome to Airbnb"
+        title="Welcome to travel"
         subtitle="Create an account!"
       />
       <Input
@@ -131,7 +132,7 @@ const RegisterModal= () => {
       </div>
     </div>
   )
-
+    
   return (
     <Modal
       disabled={isLoading}
