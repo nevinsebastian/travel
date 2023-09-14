@@ -11,6 +11,8 @@ import CategoryInput from "@/app/inputs/CategoryInput";
 import { FieldValue, FieldValues, useForm } from "react-hook-form";
 import CountrySelect from "@/app/inputs/CountrySelect";
 import dynamic from "next/dynamic";
+import Counter from "@/app/inputs/Counter";
+import ImageUpload from "@/app/inputs/ImageUpload";
 
 enum STEPS {
     CATEGORY = 0,
@@ -41,20 +43,22 @@ const RentModal = () => {
             categories:'',
             location:'',
             guestCount:'',
-            roomCount:'',
-            bathroomCount:'',
+            propsCount:'',
             imageSrc:'',
             price:1,
             title:'',
             description:''
         }
     });
-    const category = watch('category')
-    const location = watch('location')
+    const category = watch('category');
+    const location = watch('location');
+    const guestCount = watch('guestCount');
+    const propsCount = watch('propsCount');
+    const imageSrc = watch('imageSrc');
 
     const Map = useMemo(() => dynamic(() => import('../Map'),{
         ssr : false
-    }),[location])
+    }),[location]);
 
     const setCustomValue = (id: string, value: any) =>{
         setValue(id, value, {
@@ -131,6 +135,47 @@ const RentModal = () => {
                 />
                 <Map
                 center={location?.latlng}
+                />
+            </div>
+        )
+    }
+
+
+    if (step === STEPS.INFO) {
+        bodyContent =(
+            <div className="flex flex-col gap-8">
+                <Heading
+                    title="Share some basics about your place"
+                    subtitle="What amenities do you have"
+                />
+                <Counter 
+                title="Guests"
+                subtitle="how many guests do you allow?"
+                value={guestCount}
+                onChange={(value) => setCustomValue('guestCount', value)}
+                />
+                <hr />
+                 <Counter 
+                title="Number of props"
+                subtitle="how many props do you have?"
+                value={propsCount}
+                onChange={(value) => setCustomValue('propsCount', value)}
+                />
+                
+            </div>
+        )
+    }
+
+    if (step === STEPS.IMAGE){
+        bodyContent= (
+            <div className="flex flex-col gap-8">
+                <Heading
+                title="Add a photo of your activity"
+                subtitle="show guests what your activity looks like!"
+                />
+                <ImageUpload 
+                value={imageSrc}
+                onChange={(value) => setCustomValue('imageSrc', value)}
                 />
             </div>
         )
